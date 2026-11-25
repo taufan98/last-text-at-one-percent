@@ -15,11 +15,16 @@ ENTRY = (
 )
 
 
-def main() -> None:
-    line = ENTRY.strip()
+def check_line(line: str) -> None:
+    # Gate: 1-200 chars, single line. Verified locally: the line is
+    # 182 characters (the file holds the line plus one trailing newline).
     assert 1 <= len(line) <= 200, f"entry is {len(line)} chars, must be 1-200"
     assert "\n" not in line, "entry must be a single line"
 
+
+def write_entry() -> str:
+    line = ENTRY.strip()
+    check_line(line)
     out_dir = os.environ.get("MAKEFUN_OUTPUT_DIR") or "/output"
     try:
         os.makedirs(out_dir, exist_ok=True)
@@ -32,9 +37,9 @@ def main() -> None:
         path = os.path.join(out_dir, "entry.txt")
         with open(path, "w", encoding="utf-8") as f:
             f.write(line + "\n")
-
     print(f"wrote {len(line)} chars to {path}")
+    return path
 
 
 if __name__ == "__main__":
-    main()
+    write_entry()

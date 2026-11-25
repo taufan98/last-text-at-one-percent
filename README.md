@@ -12,7 +12,7 @@ The funniest final text a dying phone sends at one percent battery, under 200 ch
 python3 main.py
 ```
 
-The program writes the entry to `/output/entry.txt` (or `./output/entry.txt` when `/output` is not writable). Deterministic — every run writes the same line.
+The program writes the entry to `/output/entry.txt` (or `./output/entry.txt` when `/output` is not writable). Deterministic — every run writes the same 182-character line.
 
 ## The entry
 
